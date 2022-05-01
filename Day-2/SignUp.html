@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+        body{
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        h1{
+            text-align: center;
+            
+        }
+        #container{
+            width: 20%;
+            margin: auto;
+            padding: 5px 30px 30px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            border-radius: 10px;
+        }
+        label, input{
+            display: block;
+            margin-top: 20px;
+        }
+        h2{
+            text-align: center;
+        }
+        #number, #email ,#password{
+            width: 100%;
+            height: 30px;
+            border: 1px solid rgb(222, 222, 222);
+            border-radius: 5px;
+        }
+        p{
+            width: 80%;
+            margin: auto;
+            margin-top: 30px;
+            font-size: 8px;
+            text-align: center;
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+        }
+        #submit, #Login{
+            margin-top: 30px;
+            width: 100%;
+            height: 30px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        span{
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <H1>masai</H1>
+   <div id="container">
+        <form>
+            <h2>Sign Up</h2>
+        <label for="email">Email</label>
+        <input id="email" type="email" placeholder="Enter your email">
+
+        <label for="number">Number</label>
+        <input id="number" type="number" placeholder="Enter your phone number">
+
+        <label for="password">Password</label>
+        <input id="password" type="password" placeholder="Enter password">
+
+        <p>By signing up, I accept the Masai School <Span><u>Terms of Service</u></Span> and acknowledge the <span><u>Privacy Policy</u></span></p>
+        <input type="submit" id="submit" value="Sign Up">
+
+        <button id="Login"><a href="Login.html" target="_blank">Login</a></button>
+    </form>
+   </div>
+</body>
+</html>
+<script>
+
+    document.querySelector("form").addEventListener("submit", singupFun);
+    var signUpCredentials = JSON.parse(localStorage.getItem("cridential")) || [];
+
+    function singupFun(){
+        event.preventDefault();
+        var email = document.querySelector("#email").value;
+        var number = document.querySelector("#number").value;
+        var password = document.querySelector("#password").value;
+        // console.log(name, email, password);
+
+        var signUpData = {
+            Email: email,
+            Number: number,
+            Password: password
+        }
+        signUpCredentials.push(signUpData)
+        // console.log(signUpCredentials);
+
+        localStorage.setItem("cridential", JSON.stringify(signUpCredentials));
+        console.log(JSON.parse(localStorage.getItem("cridential")));
+    }
+    
+</script>
